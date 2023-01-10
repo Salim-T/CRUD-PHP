@@ -15,6 +15,7 @@
     <a href="index.php?ctrl=user&action=home">Home</a>
     <?php if (isset($_SESSION['user']) && $_SESSION['user'] !== null) { ?>
     <a href="index.php?ctrl=user&action=logOut">Se déconnecter</a>
+    <a href="index.php?ctrl=user&action=userList">Liste des utilisateurs</a>
     <?php
     } else { ?>
     <a href="index.php?ctrl=user&action=login">Login</a>
