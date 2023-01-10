@@ -13,11 +13,11 @@ class UserManager
 
     public function login(User $user)
     {
-        $req = $this->db->prepare('Select email from users where email = :email and password = :password');
+        $req = $this->db->prepare('Select * from users where email = :email and password = :password');
         $req->execute(
             array(
                 'email' => $user->getEmail(),
-                'password' => $user->getPassword()
+                'password' => $user->getPassword(),
             )
         );
         return $req->fetch(PDO::FETCH_ASSOC);
