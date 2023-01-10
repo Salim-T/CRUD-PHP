@@ -1,8 +1,8 @@
 <body>
     <h1>Bienvenue
         <?php
-        if (isset($result)) {
-            echo $user['firstName'];
+        if (isset($_SESSION['user'])) {
+            echo $_SESSION["user"]['firstName'];
         }
         ?>
     </h1>
