@@ -1,7 +1,7 @@
 <body>
     <h1>login</h1>
-    <a href="index.php?ctrl=user&action=home">Home</a>
     <section>
+        <br>
         <form action="index.php?ctrl=user&action=doLogin" method="POST">
             <label>Mail :</label>
             <input type="name" name="email" placeholder="Mail.." /><br>
