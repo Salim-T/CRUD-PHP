@@ -2,6 +2,7 @@
     <header>
         <h1>Création/Modification d'un User</h1>
     </header>
+    <a href="index.php?ctrl=user&action=home">Home</a>
     <hr />
     <section id="main-section">
         <form action="index.php?ctrl=user&action=doCreate" method="POST">
