@@ -1,5 +1,6 @@
 <body>
     <h1>login</h1>
+    <a href="index.php?ctrl=user&action=home">Home</a>
     <section>
         <form action="index.php?ctrl=user&action=doLogin" method="POST">
             <label>Mail :</label>
