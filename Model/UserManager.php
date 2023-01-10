@@ -40,11 +40,6 @@ class UserManager
                 'city' => $user->getCity(),
             )
         );
-        // if ($req) {
-        //     echo 'Le compte a bien été créé, veuillez vous connectez';
-        // } else {
-        //     echo 'erreur lors de la création du compte, veuillez rééssayer';
-        // }
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
