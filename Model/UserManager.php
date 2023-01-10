@@ -74,7 +74,7 @@ class UserManager
     {
         $req = $this->db->prepare('SELECT * FROM users');
         $req->execute();
-        return $req->fetchAll();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public final function findOne(User $user)

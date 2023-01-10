@@ -37,7 +37,6 @@ class userController
             $result = $this->userManager->login($this->user);
             $user = $this->userManager->findByEmail($this->user->getEmail());
             if ($result) {
-                $info = "Connexion reussie";
                 $_SESSION['user'] = $result;
                 $page = 'home';
             } else {
@@ -101,6 +100,13 @@ class userController
     {
         unset($_SESSION["user"]);
         $page = 'home';
+        require('./View/main.php');
+    }
+
+    public function userList()
+    {
+        $users = $this->userManager->findAll();
+        $page = 'userList';
         require('./View/main.php');
     }
 }
