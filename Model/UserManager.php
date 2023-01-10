@@ -40,11 +40,11 @@ class UserManager
                 'city' => $user->getCity(),
             )
         );
-        if ($req) {
-            echo 'Le compte a bien été créé, veuillez vous connectez';
-        } else {
-            echo 'erreur lors de la création du compte, veuillez rééssayer';
-        }
+        // if ($req) {
+        //     echo 'Le compte a bien été créé, veuillez vous connectez';
+        // } else {
+        //     echo 'erreur lors de la création du compte, veuillez rééssayer';
+        // }
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -86,6 +86,15 @@ class UserManager
     {
         $req = $this->db->prepare('SELECT * FROM users where id = :id');
         $req->bindvalue(':id', $user->getId());
+        $req->execute();
+        return $req->fetch();
+    }
+
+    public final function findByEmail($email)
+    {
+        $req = $this->db->prepare('SELECT * FROM users where email = :email');
+        $req->bindvalue(':email', $email);
+        $req->execute();
         return $req->fetch();
     }
 }

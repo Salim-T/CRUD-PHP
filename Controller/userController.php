@@ -34,7 +34,7 @@ class userController
                 'password' => $_POST["password"],
             );
             //$user = $this->user = new User($data);
-            $user = $this->user = new User($data);
+            $this->user = new User($data);
             $result = $this->userManager->login($this->user);
             if ($result) {
                 $info = "Connexion reussie";
@@ -66,9 +66,19 @@ class userController
                 'city' => $_POST["city"],
             );
 
-            $this->user = new User($data);
-            $this->userManager->create($this->user);
-
+            $alreadyExist = $this->userManager->findByEmail($_POST['email']);
+            var_dump($alreadyExist);
+            $error = '';
+            $success = '';
+            if (!$alreadyExist) {
+                $this->user = new User($data);
+                $this->userManager->create($this->user);
+                $page = 'login';
+                echo 'L\'utilisateur a bien été créé, veuillez vous connecter';
+            } else {
+                echo " (" . $_POST['email'] . ") est déjà utilisé par un autre utilisateur";
+                $page = 'signup';
+            }
             // $name = $data['lastName'];
             //var_dump($result);
             // if ($result) {
@@ -76,7 +86,6 @@ class userController
             // } else {
             //     $info = "L'utilisateur n'a pas pu être créé.";
             // }
-            $page = 'login';
             require('./View/main.php');
         };
     }
