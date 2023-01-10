@@ -91,7 +91,6 @@ class userController
 
     public function home()
     {
-        // $_SESSION['user'];
         $page = 'home';
         require('./View/main.php');
     }
@@ -106,7 +105,11 @@ class userController
     public function userList()
     {
         $users = $this->userManager->findAll();
-        $page = 'userList';
+        if ($_SESSION["user"]['admin'] == 1) {
+            $page = 'userList';
+        } else {
+            $page = 'unauthorized';
+        }
         require('./View/main.php');
     }
 }
