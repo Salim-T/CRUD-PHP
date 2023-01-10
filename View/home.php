@@ -6,12 +6,7 @@
         }
         ?>
     </h1>
-
-    <p>
-        <?php
-        if (isset($result)) {
-            echo $info;
-        }
-        ?>
-    </p>
+    <?php
+    //if (isset($_SESSION['user']) && $_SESSION['user'] !== null){}
+    ?>
 </body>
