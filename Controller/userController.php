@@ -33,17 +33,17 @@ class userController
                 'email' => $_POST["email"],
                 'password' => $_POST["password"],
             );
-            //$user = $this->user = new User($data);
             $this->user = new User($data);
             $result = $this->userManager->login($this->user);
             $user = $this->userManager->findByEmail($this->user->getEmail());
             if ($result) {
                 $info = "Connexion reussie";
                 $_SESSION['user'] = $result;
+                $page = 'home';
             } else {
-                $info = "Identifiants incorrects.";
+                echo "Identifiants incorrects. Veuillez réessayer";
+                $page = 'login';
             }
-            $page = 'home';
             require('./View/main.php');
         }
     }
@@ -59,7 +59,7 @@ class userController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = array(
                 'email' => $_POST["email"],
-                'password' => $_POST["password"],
+                'password' => sha1($_POST["password"]),
                 'lastName' => $_POST["lastName"],
                 'firstName' => $_POST["firstName"],
                 'address' => $_POST["address"],
