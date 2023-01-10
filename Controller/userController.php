@@ -65,8 +65,11 @@ class userController
                 'postalCode' => $_POST["postalCode"],
                 'city' => $_POST["city"],
             );
+
             $this->user = new User($data);
             $this->userManager->create($this->user);
+
+            // $name = $data['lastName'];
             //var_dump($result);
             // if ($result) {
             //     $info = "L'utilisateur a bien été créé";
