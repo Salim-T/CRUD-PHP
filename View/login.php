@@ -1,4 +1,10 @@
 <body>
+    <p class="message">
+        <?php
+        echo $success;
+        echo $error;
+        ?>
+    </p>
     <h1>login</h1>
     <section>
         <br>

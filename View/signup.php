@@ -1,4 +1,9 @@
 <body>
+    <p class="message">
+        <?php
+        echo $error;
+        ?>
+    </p>
     <header>
         <h1>Création/Modification d'un User</h1>
     </header>

@@ -22,6 +22,8 @@ class userController
 
     public function login()
     {
+        $success = '';
+        $error = '';
         $page = 'login';
         require('./View/main.php');
     }
@@ -40,7 +42,8 @@ class userController
                 $_SESSION['user'] = $result;
                 $page = 'home';
             } else {
-                echo "Identifiants incorrects. Veuillez réessayer";
+                $error = "Identifiants incorrects. Veuillez réessayer";
+                $success = '';
                 $page = 'login';
             }
             require('./View/main.php');
@@ -49,6 +52,7 @@ class userController
 
     public function create()
     {
+        $error = '';
         $page = 'signup';
         require('./View/main.php');
     }
@@ -68,23 +72,15 @@ class userController
 
             $alreadyExist = $this->userManager->findByEmail($_POST['email']);
             $error = '';
-            $success = '';
             if (!$alreadyExist) {
                 $this->user = new User($data);
                 $this->userManager->create($this->user);
                 $page = 'login';
-                echo 'L\'utilisateur a bien été créé, veuillez vous connecter';
+                $success = 'L\'utilisateur a bien été créé, veuillez vous connecter';
             } else {
-                echo " L'email " . $_POST['email'] . " est déjà utilisé par un autre utilisateur. Veuillez recommencer l'inscription";
+                $error = " L'email " . $_POST['email'] . " est déjà utilisé par un autre utilisateur. Veuillez recommencer l'inscription";
                 $page = 'signup';
             }
-            // $name = $data['lastName'];
-            //var_dump($result);
-            // if ($result) {
-            //     $info = "L'utilisateur a bien été créé";
-            // } else {
-            //     $info = "L'utilisateur n'a pas pu être créé.";
-            // }
             require('./View/main.php');
         };
     }

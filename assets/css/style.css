@@ -32,6 +32,8 @@ form {
     text-align: center;
 }
 
+
+
 a {
     margin-left: 5px;
 }
@@ -48,4 +50,8 @@ th,
 td {
     padding: 5px 15px;
     border: 1px solid #777;
+}
+
+.message {
+    margin-top: 10px;
 }
